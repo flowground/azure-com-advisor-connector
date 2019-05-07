@@ -1,0 +1,66 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceUri": {
+            "required": true,
+            "type": "string"
+        },
+        "recommendationId": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "An Azure resource.",
+                    "properties": {
+                        "id": {
+                            "description": "The resource ID.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "The type of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "The details of the snoozed or dismissed rule; for example, the duration, name, and GUID associated with the rule.",
+            "properties": {
+                "properties": {
+                    "description": "The properties of the suppression.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "suppressionId": {
+                            "description": "The GUID of the suppression.",
+                            "type": "string"
+                        },
+                        "ttl": {
+                            "description": "The duration for which the suppression is valid.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

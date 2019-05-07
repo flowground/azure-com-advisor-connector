@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceUri": {
+            "required": true,
+            "type": "string"
+        },
+        "recommendationId": {
+            "required": true,
+            "type": "string"
+        },
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

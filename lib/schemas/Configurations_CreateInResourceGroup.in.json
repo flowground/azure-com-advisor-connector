@@ -1,0 +1,52 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroup": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The Advisor configuration data structure.",
+            "properties": {
+                "id": {
+                    "description": "The resource Id of the configuration resource.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name of the configuration resource.",
+                    "type": "string"
+                },
+                "properties": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "description": "The list of property name/value pairs.",
+                    "properties": {
+                        "exclude": {
+                            "description": "Exclude the resource from Advisor evaluations. Valid values: False (default) or True.",
+                            "type": "boolean"
+                        },
+                        "low_cpu_threshold": {
+                            "description": "Minimum percentage threshold for Advisor low CPU utilization evaluation. Valid only for subscriptions. Valid values: 5 (default), 10, 15 or 20.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": {
+                    "description": "The type of the configuration resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

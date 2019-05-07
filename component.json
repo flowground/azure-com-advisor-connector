@@ -1,0 +1,269 @@
+{
+    "title": "AdvisorManagementClient",
+    "description": "REST APIs for Azure Advisor",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/advisor/2017-04-19/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow.",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Operations_List": {
+            "main": "./lib/actions/Operations_List.js",
+            "title": "Lists all the available Advisor REST API operations.",
+            "description": "Lists all the available Advisor REST API operations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Configurations_ListBySubscription": {
+            "main": "./lib/actions/Configurations_ListBySubscription.js",
+            "title": "Retrieve Azure Advisor configurations.",
+            "description": "Retrieve Azure Advisor configurations and also retrieve configurations of contained resource groups.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Configurations_ListBySubscription.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Configurations_CreateInSubscription": {
+            "main": "./lib/actions/Configurations_CreateInSubscription.js",
+            "title": "Create/Overwrite Azure Advisor configuration.",
+            "description": "Create/Overwrite Azure Advisor configuration and also delete all configurations of contained resource groups.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Configurations_CreateInSubscription.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Recommendations_Generate": {
+            "main": "./lib/actions/Recommendations_Generate.js",
+            "title": "Initiates the recommendation generation or computation process for a subscription. This operation is asynchronous. The generated recommendations are stored in a cache in the Advisor service.",
+            "description": "Initiates the recommendation generation or computation process for a subscription. This operation is asynchronous. The generated recommendations are stored in a cache in the Advisor service.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Recommendations_Generate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Recommendations_GetGenerateStatus": {
+            "main": "./lib/actions/Recommendations_GetGenerateStatus.js",
+            "title": "Retrieves the status of the recommendation computation or generation process. Invoke this API after calling the generation recommendation. The URI of this API is returned in the Location field of the response header.",
+            "description": "Retrieves the status of the recommendation computation or generation process. Invoke this API after calling the generation recommendation. The URI of this API is returned in the Location field of the response header.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Recommendations_GetGenerateStatus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Recommendations_List": {
+            "main": "./lib/actions/Recommendations_List.js",
+            "title": "Obtains cached recommendations for a subscription. The recommendations are generated or computed by invoking generateRecommendations.",
+            "description": "Obtains cached recommendations for a subscription. The recommendations are generated or computed by invoking generateRecommendations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Recommendations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Suppressions_List": {
+            "main": "./lib/actions/Suppressions_List.js",
+            "title": "Retrieves the list of snoozed or dismissed suppressions for a subscription. The snoozed or dismissed attribute of a recommendation is referred to as a suppression.",
+            "description": "Retrieves the list of snoozed or dismissed suppressions for a subscription. The snoozed or dismissed attribute of a recommendation is referred to as a suppression.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Suppressions_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Configurations_ListByResourceGroup": {
+            "main": "./lib/actions/Configurations_ListByResourceGroup.js",
+            "title": "Retrieve Azure Advisor configurations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Configurations_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Configurations_CreateInResourceGroup": {
+            "main": "./lib/actions/Configurations_CreateInResourceGroup.js",
+            "title": "Create/Overwrite Azure Advisor configuration.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Configurations_CreateInResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Recommendations_Get": {
+            "main": "./lib/actions/Recommendations_Get.js",
+            "title": "Obtains details of a cached recommendation.",
+            "description": "Obtains details of a cached recommendation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Recommendations_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Suppressions_Delete": {
+            "main": "./lib/actions/Suppressions_Delete.js",
+            "title": "Enables the activation of a snoozed or dismissed recommendation. The snoozed or dismissed attribute of a recommendation is referred to as a suppression.",
+            "description": "Enables the activation of a snoozed or dismissed recommendation. The snoozed or dismissed attribute of a recommendation is referred to as a suppression.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Suppressions_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Suppressions_Get": {
+            "main": "./lib/actions/Suppressions_Get.js",
+            "title": "Obtains the details of a suppression.",
+            "description": "Obtains the details of a suppression.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Suppressions_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Suppressions_Create": {
+            "main": "./lib/actions/Suppressions_Create.js",
+            "title": "Enables the snoozed or dismissed attribute of a recommendation. The snoozed or dismissed attribute is referred to as a suppression. Use this API to create or update the snoozed or dismissed status of a recommendation.",
+            "description": "Enables the snoozed or dismissed attribute of a recommendation. The snoozed or dismissed attribute is referred to as a suppression. Use this API to create or update the snoozed or dismissed status of a recommendation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Suppressions_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

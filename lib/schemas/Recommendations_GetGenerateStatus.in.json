@@ -1,0 +1,18 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "operationId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
